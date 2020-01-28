@@ -1,0 +1,30 @@
+device token
+- 특정장치 특정앱에 할당.
+
+APN은 다음과 같은 여러 가지 이유로 새로운 장치 토큰을 발행 할 수 있습니다.
+
+사용자가 새 기기에 앱을 설치
+사용자가 백업에서 장치를 복원
+사용자가 운영 체제를 다시 설치합니다
+다른 시스템 정의 이벤트
+
+
+권한 요청
+requestAuthorizationWithOptions:completionHandler (ios 10 이상)
+시스템이 유저가 선택한 응답 저장해서 실행중에 이 메소드 호출해도 다시 프롬프트 하지 않음.
+
+권한 확인
+getNotificationSettingsWithCompleteHandler
+
+notification category
+- 사용자 정의 알림 액션 ( 예를 들어 알림에 유저가 선택할 수 있는 버튼 추가 )
+
+UNNotificationCategory* generalCategory = [UNNotificationCategory
+     categoryWithIdentifier:@"GENERAL"
+     actions:@[]
+     intentIdentifiers:@[]
+     options:UNNotificationCategoryOptionCustomDismissAction];
+
+// Register the notification categories.
+UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+[center setNotificationCategories:[NSSet setWithObjects:generalCategory, nil]];

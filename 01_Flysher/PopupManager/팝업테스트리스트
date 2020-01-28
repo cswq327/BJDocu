@@ -1,0 +1,81 @@
+* 팝업 작업중 ( 초기 시퀀스 작업 중 )
+PrivacyPolicy (o)
+  - terms of service (0)
+  - PrivacyPolicy (0)
+
+UnprocessedPurchaseFlow(x)
+
+UpdateRewardPopup(0)
+
+RichPotGuide(x)
+
+MaintenanceGift(0)
+
+requestWelcomeGiftInformation(x)
+
+BirthDayBenefit(0)
+
+AllNewMobileReleaseLayer(0)
+
+NewWelcomeBackPopUp ( welcomeback ) (x)
+
+DailyBonusLayer(0)
+ - facebook share(0)
+
+DailyStampLayer(0)
+ - AppleNotificationGuidance
+   - AppleNotificationSettingGuidance
+
+EncourageFacebookLogin(0)
+
+ApologyGiftLayer( x )
+
+NewClassUp(x)
+ - class board( ????? 안함 )
+ - NewClassUpUI (??? 안함)
+
+eventSaleLayer( x )
+
+CouponPopUp(0)
+
+CheckInboxLayer(0)
+
+RichPotReward(x)
+
+FreePassPopup (0)
+
+ThreeDaysFestival
+  - ThreeDaysFestivalResult(0)
+
+EventSaleLayer(x) - shop 과 연동할때
+
+GrantEventCoupon (0)
+
+EventMissionStart ( x )
+
+EventMissionProg ( x )
+
+LikeUsPopup ( 0 )
+
+FlashDeal(x)
+
+BonusCenterGuideLayer(0)
+  - BonusCenterLayer ( 이거 안씀 0 )
+
+InviteFinishReward
+
+SelectGameGuideLayer
+
+PuzzleEventGuideLayer(0)
+  - PuzzleEventGameLayer(0)
+  - PuzzleEventResultLayer(0)
+
+CrossWordGameGuideLayer
+
+* event
+
+FirstPurchaseSpecialLayer()
+
+NewFlashSaleLayer()
+
+RemindFlashSalePopUp()

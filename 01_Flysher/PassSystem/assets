@@ -1,0 +1,54 @@
+PP_EventPassAtlas.plist
+PP_EventPassAtlas.png
+PU_EventPassNaviAtlas.plist
+PU_EventPassNaviAtlas.png
+
+PP_EventPassChallenge_freeAR.ExportJson     // freeAR
+PP_EventPassChallenge_premiumAR.ExportJson  // premiumAR
+PP_EventPassChallenge_stageAR.ExportJson
+PP_EventPassClaimFxAR.ExportJson          // 클레임 fx ar
+PP_EventPassChallenge_lockAR.ExportJson   // rock 아이콘 ar
+PP_EventPassPremiumFxAR.ExportJson
+PP_EventPassTitleAR.ExportJson            // 이벤트 메인 팝업의 타이틀
+
+
+PU_EventPassChallengeUI.ExportJson
+
+PP_EventPassChallengeUI.ExportJson
+   lbStage
+   lbReward_free / lbReward_premium
+
+// 패스 메인 팝업
+PP_EventPassMainAR.ExportJson
+PP_EventPassMainUI.ExportJson
+- lbTime
+- imgStatus
+  - lbTextStatus
+  - btnPlay
+  - imgThumbnail
+  - lbStage
+
+- pnlPreminumPass
+    - btnActivate
+      - lbPrice
+    - btnInfo
+      - imgInfo ( 이건 아마 툴팁 이미지 )
+- pnl
+- btnLeft
+- btnRight
+- btnPage01
+- btnExit
+
+PU_EventPassNaviAR.ExportJson 로비 / 슬롯 아이콘
+PU_EventPassNaviUI.ExportJson
+
+PP_EventPassNoti01AR.ExportJson
+PP_EventPassNoti01UI.ExportJson ( 홍보팝업 1 )
+  - btnPlay
+  - btnExit
+  - lbReward
+
+PP_EventPassNoti02AR.ExportJson ( 홍보 팝업 2)
+PP_EventPassNoti02UI.ExportJson
+  - btnPlay
+  - btnExit

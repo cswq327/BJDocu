@@ -1,0 +1,86 @@
+
+//region [ popup interfaces ]
+isReadyToClose : function () {
+
+},
+
+closePopupLayer : function () {
+
+},
+//endregion
+
+RockN.AutoPositionNode.extend
+
+ctor
+
+onEnter
+onEnterTransitionDidFinish
+onExit
+
+setKeyClickEnabled
+getKeyClickEnabled
+
+closePoupLayer
+
+팝업에 대한 1차 정의
+1. 팝업을 생성해서 들고 있는 경우는 없다.
+  - 즉 팝업객체 생성 즉시 보여지고 사라지면 삭제된다.
+  - 낮은 order 의 생성은 되지 않는다.
+
+2. 팝업은 공통 인터페이스를 통해 닫힌다.
+3. 팝업은 사라질때 리소스도 같이 지운다.
+
+
+팝업 생성은 2차 작업에
+
+지금은 close interface 맞추고 manager 가 관리하도록 한다.
+closePopupLayer 를 close interface 로 한다.
+
+scene graph 냐 component 냐...
+1. 이미 팝업 대체로 많은 base 가 사용하고 있다.
+2. component 는 아직 입맛에 맞게 수정될 여지가 있다.
+3. 많은 depth....
+
+factory
+- string 이냐.. object 냐...
+
+1. popupManager 와 managedPopup Component 로 구성
+-popupManager
+  - 팝업 order
+  - gray layer
+  - back button 지원
+
+- managedPopup Component
+  - owner 의 팝업 등록 , 해제
+  - owner 의 팝업 아래 터치 방지
+
+
+// 초기 시퀀스 팝업부터
+웰컴기프트
+데일리보너스
+데일리스탬프
+페이스북커넥
+
+1. 보너스 센터
+- 데일리 보너스
+- 데일리 스탬프
+- 로터리
+- 라킹캐시( 미니슬롯)
+- weekly challenge
+
+
+2. 게임메뉴
+- 고투메뉴
+- 세팅 ( guest 인바이트 -> fb encourage // help // terms // policy )
+- 클래스 ( --> benefit )
+- 인바이트 ( 게스트일 경우 facebook 유도 팝업)
+
+3. hall of fame
+- prize
+
+4. profile
+
+99. 기타
+- facebook 유도
+- rate us
+- like us

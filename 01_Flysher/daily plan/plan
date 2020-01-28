@@ -1,0 +1,18 @@
+2019/09/02
+
+1. PST 처리
+
+1. braze 버튼 액션 처리
+2. 안드로이드 8.0 미만 버전 노티 처리
+3. ipa, apk 뽑아서 올려놓고 테스트 해보기
+4. andrdoid JSB 작업
+  기본 어트리뷰트 세팅
+  SETTING EMAIL SUBSCRIPTIONS
+  SETTING PUSH NOTIFICATION SUBSCRIPTION
+  프로퍼티 세팅 가능하게 하자.
+  페이스북
+  로케이션 트래킹
+  Uninstall Tracking
+
+
+ios8 크래시, ios8~9 push notification 이 오지 않는 이슈 등을 같이 대응하면서, 

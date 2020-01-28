@@ -1,0 +1,12 @@
+( ios 부터 )
+1. facebook integration
+  - using sdkbox
+  - manual
+
+2. integration by sdkbox
+  - login
+  - get my info
+  - graph api
+  - share, invite dialog
+  - get friend list
+  - get some friend info

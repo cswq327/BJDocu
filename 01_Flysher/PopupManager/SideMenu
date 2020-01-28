@@ -1,0 +1,14 @@
+
+
+gotoMenu
+setting
+ - AppleNotificationSettingGuidance
+ - web views
+
+ class
+  - class benefit info
+  - class info
+
+invite
+- EncourageFacebookLogin ( guest )
+- FriendBenefit ( fb login )

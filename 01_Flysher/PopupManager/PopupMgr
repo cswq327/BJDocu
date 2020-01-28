@@ -1,0 +1,10 @@
+managedPopup component
+- 팝업 매니저 등록
+- 하위 노드 터치 예방
+- 팝업 유효성 검사
+
+PopupManger
+ - 팩토리 생
+ - 일괄 닫힘 인터페이스
+ - gray 레이어 처리
+ - 씬 resume pause

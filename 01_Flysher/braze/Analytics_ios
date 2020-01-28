@@ -1,0 +1,6 @@
+1. ios 세션 라이프 사이클
+  - [Appboy sharedInstance] startWithApiKey:inApplication:withLaunchOptions:withAppboyOptions 를 호출하면 세션 시작.
+  - 기본적으로 applicationWillEnterForeground 호출되면 세션 시작
+    ApplicationDidEnterBackground 호출되거나 앱을 종료하면 세션 끝
+  - info.plist 에서 Appboy dictionary 에 SessionTimeout 키 추가후 숫자 ( 단위 : 초) 넣으면
+    커스텀하게 세션 타임아웃 컨트롤 가능.

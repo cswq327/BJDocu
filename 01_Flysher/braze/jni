@@ -1,0 +1,6 @@
+c++ 쪽에서 java 함수 호출은 jnihelper 를 통해 함수를 찾아서 호출할 수 있다.
+
+반대로 java 에서 c++ 함수 호출은
+
+1. c++ 에 Braze_onReceivePushNotification 함수가 있고
+2. main.cpp 에 

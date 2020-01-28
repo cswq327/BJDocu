@@ -1,0 +1,6 @@
+var currDate    = Date.now();
+          var currDate2   = new Date();
+          var currMT01 = moment();
+          var currMT02 = currMT01.tz("America/Los_Angeles");
+          var currMT03 = currMT02.format();
+          var currMT04 = currMT02.format("yyyy-MM-dd'T'HH:mm:ss.SSSZ");

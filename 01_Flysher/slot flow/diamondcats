@@ -1,0 +1,36 @@
+슬롯 진입 요청 프로토콜
+응답 받으면 nethandler 에 'onEntrySlot' emit
+nethandler 'onEntrySlot' on
+  - scenemanager 를 통해 scene swap ( 이 때 씬이 생성 되어 run 됨 );
+  - swap callback 으로 signal 보냄  ( sig_set_slot )
+    - 데이터 포멧
+      protocol   : SIG.SIG_SET_SLOT,
+			gameInfo   : msg[ 'gameInfo' ],
+			syncParams : msg[ 'syncParams' ],
+			gameParams : msg[ 'gameParams' ],
+			rid        : msg.rid
+
+
+
+[ slot scene create ]
+ctor
+  - sceneType, slot game_id 세팅
+  - gameNode 생성해서 만들어주고
+  - init call
+
+init
+  - 슬롯 메뉴 생성
+  - 각종 리소스 초기화 ( ui, ar, jackpot board ...)
+  - 심볼 속성 세팅
+
+[ handle_signal -> set_slot ]
+  - slotmenu::setup
+  - setslot 해주고 callback 으로 state 초기화 / 싱크 있음 맞춰주고 / 노말오브젝트 초기
+  - sync 할거 있음 해주고
+
+[ init state ]
+
+
+[ stateMachine ]
+생성시 none
+onEnterTransitionDidFinish 에서 idle 로 ( 동기화 없을 경우 )

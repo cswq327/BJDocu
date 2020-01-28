@@ -1,0 +1,24 @@
+시나리오
+
+백그라운드일 경우
+
+[ Braze push ]  푸시 알림 받음 ( ios 10 이상, 앱 background 상태 )
+
+- applicationWillEnterForeground 호출 ( 1초 후에 reconnect  )
+- didReceiveNotificationResponse 호출
+- push listener 호출
+- openUrl 호출
+- check timer 때문에 자바스크립트에서 game on show trigger
+  - check_refferer
+    -  RockN.DeepLink.checkReferrer
+        - 딥링크 쿼리 스트링 파싱해서 팝업 만들어주고 팝업들 실행.
+
+  - 여기서 get deepLink 하는데 이 전에 세팅만 해주면 될듯.
+
+
+포그라운드일 경우
+
+- userNotificationCenter 호출
+- didReceiveNotificationResponse 호
+- push listener 호출 onReceivePushNotification
+- deep link url 있다면  RockN.DeepLink.runUrl 실

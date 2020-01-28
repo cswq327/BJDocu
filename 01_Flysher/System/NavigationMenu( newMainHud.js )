@@ -1,0 +1,7 @@
+< 객체 생성 시점 >
+1. BaseScene::onEnter > init_navigationMenu
+2. vipLounge::onEnter
+    - VipLounge 가 BaseScene 을 상속받고 있지만 라운지 객체에서 init_navigationMenu 재정의 해서 다른 로직으로 초기화
+
+* 슬롯입장(vip/normal 공토) 시 BaseScene::onEnter > init_navigationMenu
+  vipLounge 입장할 때만 vipLounge::init_navigationMenu

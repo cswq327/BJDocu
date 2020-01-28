@@ -1,0 +1,84 @@
+
+before login 이벤트 추가
+2019/05/17
+* 딥링크 통해 보상 받은 경우 오랜만에 앱 재실행 할 때마다 팝업 뜨는 이슈 수정
+* 앱스플라이어 이벤트 추가 (beforeLogin) OBG 17/05/2019, 9:31 PM
+
+
+before login 시점
+
+reqCreateGuestAccount
+ - STORAGE_KEY.BEFORE_LOGIN 가 없으면 true 저장후 이벤트 날림
+
+페이스북 로그인 과정에서 페이스북 퍼미션 요청하고 응답받으면
+ - STORAGE_KEY.BEFORE_LOGIN 가 없으면 true 저장후 이벤트 날림
+
+
+
+게임중 페이스북 로그인
+#################### JS LOG ####################  앱스플라이어 이벤트 >>   v3_rnc_fbconv_old_dev
+
+
+페이스북 로그아웃 후 게스트 로그인
+
+신규 유저 게스트 로그인
+  v3_rnc_launch_dev
+  v3_rnc_before_login_dev
+
+  v3_rnc_login_guest_dev
+  v3_rnc_beforeEntryLoading_guest_dev
+
+  - 게임중 페이스북 로그인
+    ...
+
+  - 재설치 후 게스트 로그인
+    v3_rnc_launch_dev
+
+    // v3_rnc_beforeEntryLoading_guest_dev
+
+    - 재접속 후 게스트 로그인
+      ...
+
+    - 재접속 후 게임중에 페이스북 로그인
+      v3_rnc_before_login_dev
+      v3_rnc_fbconv_old_dev
+
+  - 재설치 후 페이스북 로그인
+    v3_rnc_launch_dev
+    v3_rnc_before_login_dev
+
+    // v3_rnc_login_fb_dev
+    - 재접속 후 자동 페북 로그인
+      ...
+
+    - 로그 아웃 후 재접속 후 게스트 로그인
+      ...
+
+  - 재설치 후 페이스북 로그인
+     v3_rnc_launch_dev
+     v3_rnc_before_login_dev
+
+  - 재설치 후 게스트 로그인
+       v3_rnc_launch_dev
+
+    - 게임 중 페이스북 로그인
+      v3_rnc_before_login_dev
+
+
+신규 유저 페이스북 로그인
+  v3_rnc_launch_dev
+  v3_rnc_before_login_dev
+
+  - 게임 중 게스트 로그인
+    ...
+
+  - 재설치 후 페이스북 로그인
+    v3_rnc_launch_dev
+    v3_rnc_before_login_dev
+
+  - 재설치 후 게스트 로그인
+    v3_rnc_launch_dev
+
+      - 재접속 후 페북
+        v3_rnc_launch_dev
+        v3_rnc_before_login_dev

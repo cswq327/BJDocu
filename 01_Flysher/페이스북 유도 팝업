@@ -1,0 +1,11 @@
+팝업 시퀀스 타입은 총 3개
+- 초기시퀀스 ( protect your progress )
+  - 초기시퀀스에서 나오는 팝업
+  - 쿨타임 : 48
+- share ( brag your win )
+  - 셰어는 초기에 쿨타임 4시간 이었지만 슬롯별로 다 봐야하고
+  - 셰어의 종류가 major win  이외가 많아 쿨타임 공유 이슈가 있어서
+  - 쿨타임 없이 그냥 보여주기로 함.
+- free coin ( free coin )
+  - 돈이 다 떨어졌을 경우 cheerup -> 999% or special offer -> facebook encourage
+  - 쿨타임 없음

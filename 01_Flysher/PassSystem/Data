@@ -1,0 +1,33 @@
+ SeasonData
+  - id : 0
+  - levelDataList : []
+  // - desc or spriteName : auto ( 클라이언트에서 )
+
+ LevelData
+  - id
+  - ChallengeDataList : []
+
+ ChallengeData
+  - id
+  - completeTarget : 10,
+  - slotID
+  - reward : [ 100, 1000 ]
+  // - desc : auto
+  // - thumbnail : auto
+
+  처음 초기 시퀀스 프로토콜 ( 프로토콜 새로 만들어도 될 거 같아요  )
+  - enable Pass Season
+  - currLevelID
+  - remainTime
+  - isPreminumPass
+  - currentChallengeStep  ( 퀘스트 완료한 첼린지 )
+  - currentRewardStep     ( 보상 완료한 첼린지  )
+  - SeasonData
+
+
+JSON 예제
+{"id":0,"levelList":[{"id":0,"challengeList":[{"id":0,"slotID":10,"questID":0,"completeTarget":10,"rewards":[100,1000],"desc":"","thumbnail":""},{"id":1,"slotID":20,"questID":1,"completeTarget":11,"rewards":[200,2000],"desc":"","thumbnail":""}]},{"id":1,"challengeList":[{"id":2,"slotID":30,"questID":2,"completeTarget":12,"rewards":[300,3000],"desc":"","thumbnail":""},{"id":3,"slotID":40,"questID":3,"completeTarget":13,"rewards":[400,4000],"desc":"","thumbnail":""}]}]}
+
+
+
+{"protocol":342,"action":10,"code":200,"enablePassSeason":1,"currLevelID":1,"eventRemainTime":447946,"levelRemainTime":15946,"isPremiumPass":0,"currentChallengeStep":0,"currentRewardStep":-1,"currentPremiumRewardStep":-1,"seasonData":"{\"levelList\":[{\"id\":1,\"challengeList\":[{\"id\":0,\"completeTarget\":1000,\"slotID\":[40,1040],\"reward\":[330000,1000000],\"questID\":0},{\"id\":1,\"completeTarget\":2000,\"slotID\":[79,1079],\"reward\":[340000,1100000],\"questID\":8},{\"id\":2,\"completeTarget\":3000,\"slotID\":[57,1057],\"reward\":[350000,1100000],\"questID\":1}]},{\"challengeList\":[{\"id\":3,\"completeTarget\":4000,\"slotID\":[94,1094],\"reward\":[360000,1200000],\"questID\":2},{\"id\":4,\"completeTarget\":5000,\"slotID\":[85,1085],\"reward\":[380000,1200000],\"questID\":0},{\"id\":5,\"completeTarget\":6000,\"slotID\":[88,1088],\"reward\":[390000,1200000],\"questID\":4}],\"id\":2},{\"challengeList\":[{\"id\":6,\"completeTarget\":7000,\"slotID\":[87,1087],\"reward\":[400000,1300000],\"questID\":0},{\"id\":7,\"completeTarget\":8000,\"slotID\":[91,1091],\"reward\":[410000,1300000],\"questID\":1},{\"id\":8,\"completeTarget\":9000,\"slotID\":[79,1079],\"reward\":[420000,1400000],\"questID\":2}],\"id\":3},{\"challengeList\":[{\"id\":9,\"completeTarget\":10000,\"slotID\":[40,1040],\"reward\":[430000,1400000],\"questID\":3},{\"id\":10,\"completeTarget\":11000,\"slotID\":[85,1085],\"reward\":[450000,1400000],\"questID\":2},{\"id\":11,\"completeTarget\":12000,\"slotID\":[91,1091],\"reward\":[460000,1500000],\"questID\":1}],\"id\":4},{\"challengeList\":[{\"id\":12,\"completeTarget\":13000,\"slotID\":[88,1088],\"reward\":[470000,1500000],\"questID\":0},{\"id\":13,\"completeTarget\":14000,\"slotID\":[40,1040],\"reward\":[480000,1500000],\"questID\":2},{\"id\":14,\"completeTarget\":15000,\"slotID\":[94,1094],\"reward\":[490000,1600000],\"questID\":1}],\"id\":5},{\"challengeList\":[{\"id\":15,\"completeTarget\":16000,\"slotID\":[91,1091],\"reward\":[510000,1600000],\"questID\":9},{\"id\":16,\"completeTarget\":17000,\"slotID\":[87,1087],\"reward\":[520000,1700000],\"questID\":6},{\"id\":17,\"completeTarget\":18000,\"slotID\":[88,1088],\"reward\":[530000,1700000],\"questID\":2}],\"id\":6},{\"challengeList\":[{\"id\":18,\"completeTarget\":19000,\"slotID\":[40,1040],\"reward\":[540000,1700000],\"questID\":5},{\"id\":19,\"completeTarget\":20000,\"slotID\":[94,1094],\"reward\":[550000,1800000],\"questID\":1},{\"id\":20,\"completeTarget\":21000,\"slotID\":[85,1085],\"reward\":[560000,2000000],\"questID\":7}],\"id\":7}]}"}

@@ -1,0 +1,32 @@
+
+
+
+eventSale
+
+- SIG.SIG_LAST_LOGIN 프로토콜에서 정보 받음
+- showEventSale, eventSalePlatform 정보로 보여줄 지 판단
+- protocol: SIG.SIG_SHOP,
+  action: SIG.SHOP_ACTION.GET_EVENT_SAL 로 다시 요청해서
+  halfSaleAvailable 이 아니면 띄워줌.
+
+
+
+
+플래시세일, 하프세일, 첫구매세일은 같은 아이콘 AR 에 에니메이션으로 구분.
+
+RockN.Player.halfSaleAvailable 이면 하프세일
+RockN.Player.bestDealProducts.type === 70 이면 첫 구매세일
+둘다 아니면 플래시 세일
+
+플래시 세일 spawn
+- 서버로부터 onSetFlashDeal 이벤트 발생시.. 슬롯에서
+  언제 주는지는 서버에서 확인해야 함.
+- 로그인 시퀀스에서 복귀 유저일 경우
+- 로그인 시퀀스에서 라이크어스 팝업 안본 상황에서
+  flashDealEnable 값이 오면
+  - 요거도 언제 뜨는지 확인해야 함.
+
+
+extra 세일 / 이벤트 세일 같은 레벨
+플래시 세일
+- half, first purchase, flashdeal 이게 같은 레벨로 봐야 함.

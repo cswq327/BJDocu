@@ -1,0 +1,66 @@
+##### Payment ##### need item index :  103
+Shop.js:1102 ##### Payment ##### need item path :  undefined
+Shop.js:1117 =============== Shop Params ===============
+Shop.js:1118 {"protocol":108,"action":1,"purchase_type":10,"productID":103,"coins":12000000,"price":19.99,"playerID":1515}
+Shop.js:1131 ##### Payment ##### response item index :  undefined
+Shop.js:1132 ##### Payment ##### response item path :  undefined
+Shop.js:1133 ##### Payment ##### response request id :  5734
+Shop.js:1135 =============== Shop Payment result ===============
+Shop.js:1136 {"code":200,"protocol":108,"action":1,"productID":103,"og_path":"shop/shop_3_04.html","og_id":"1189245591121614","request_id":5734}
+debug.js:3654 received message xd_action=plugin_ready&name=fccbcd1925b398&cb=f325e97840e0328&domain=localhost&origin=https%3A%2F%2Flocalhost%3A8000%2Ff237784c2a9144&relation=opener from https://www.facebook.com
+
+
+
+
+
+
+received message cb=fbef5f6bf12ff&domain=localhost&origin=https%3A%2F%2Flocalhost%3A8000%2Ff23f4b18d8780bc&relation=opener&frame=f53768700d934c&result=%7B%22payment_id%22%3A1637210533075905%2C%22amount%22%3A%2219.99%22%2C%22currency%22%3A%22USD%22%2C%22quantity%22%3A%221%22%2C%22request_id%22%3A%225735%22%2C%22status%22%3A%22completed%22%2C%22signed_request%22%3A%22AthMRvunlR5bdVbqNxEkrbflqzU7nN-OFkdFH4o10EU.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImFtb3VudCI6IjE5Ljk5IiwiY3VycmVuY3kiOiJVU0QiLCJpc3N1ZWRfYXQiOjE1Njk1Nzc4NjEsInBheW1lbnRfaWQiOjE2MzcyMTA1MzMwNzU5MDUsInF1YW50aXR5IjoiMSIsInJlcXVlc3RfaWQiOiI1NzM1Iiwic3RhdHVzIjoiY29tcGxldGVkIn0%22%7D&payment_id=1637210533075905&amount=19.99&currency=USD&quantity=1&request_id=5735&status=completed&signed_request=AthMRvunlR5bdVbqNxEkrbflqzU7nN-OFkdFH4o10EU.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImFtb3VudCI6IjE5Ljk5IiwiY3VycmVuY3kiOiJVU0QiLCJpc3N1ZWRfYXQiOjE1Njk1Nzc4NjEsInBheW1lbnRfaWQiOjE2MzcyMTA1MzMwNzU5MDUsInF1YW50aXR5IjoiMSIsInJlcXVlc3RfaWQiOiI1NzM1Iiwic3RhdHVzIjoiY29tcGxldGVkIn0&e2e=%7B%22start_0%22%3A1569577833433%2C%22tti_0%22%3A1569577834258.925%2C%22submit_0%22%3A1569577860102%7D from https://www.facebook.com
+debug.js:3654 e2e: {"init":1569577832269,"start_0":1569577833433,"tti_0":1569577834258.925,"submit_0":1569577860102,"close":1569577862093,"method":"pay","display":"popup"}
+socialUtil.js:3545 ##### Pay dialog response :
+socialUtil.js:3546 {payment_id: 1637210533075905, amount: "19.99", currency: "USD", quantity: "1", request_id: "5735", …}
+socialUtil.js:3580 [Purchase Verification] :  {protocol: 108, action: 2, code: 200, grantPoint: 280, decoded_data: {…}, …}
+Shop.js:627 ===== couponBase action: to -187
+Shop.js:628 ===== couponBase action: to -187
+BaseScene.js:42 @@ Gray Layer count :  2
+BaseScene.js:46 @@ Gray Layer Target Change
+player.js:1241 onSyncBalance :  181624248718
+
+
+
+2,000,000
+Shop.js:627 ===== couponBase action: to -187
+Shop.js:628 ===== couponBase action: to -187
+Shop.js:457 [Shop] recent purchase: 19.
+
+
+curGoal
+curGauge
+
+//
+{"protocol":108,"action":20,"products":{"id":912,"appleStoreID":"com.rockncash.912","googleStoreID":"com.rockncash.912","grade":3,"name":"VIP Premium Pass","type":90,"coins":0,"original":0,"more":0,"usd":19.99,"class_point":280,"vip_free_pass":0,"coupon":0,"og_path":"etc/premium_pass_04.html","og_id":"2619338921420795","params":"","iap":"com.rockncash.912p3"},"code":200}
+
+
+[Purchase Verification] :
+{protocol: 108, action: 2, code: 200, grantPoint: 30, decoded_data: {…}, …}
+Balance: 1050000
+Level: 1
+ProductAmount: 2.99
+action: 2
+classPoint: 60
+code: 200
+couponCount: 0
+decoded_data: {algorithm: "HMAC-SHA256", amount: "2.99", currency: "USD", issued_at: 1569931782, payment_id: 1683157351814356, …}
+grant: 0
+grantPoint: 30
+id: 909
+message: "purchase success"
+name: "Gold Premium Pass"
+okCode: 0
+protocol: 108
+remainReward: 0
+result: 1
+type: 90
+upReward: 0
+vipFreePassEndMS: 0
+vipFreePassStartMS: 0
+__proto__: Object

@@ -1,0 +1,108 @@
+< 기본 braze 연동 >
+1. gradle 에 repository 에 추가
+  -  maven { url "https://appboy.github.io/appboy-android-sdk/sdk" }
+
+2. dependencies 에
+  - implementation "com.appboy:android-sdk-ui:3.6+" 추가
+
+3. values 에 appboy.xml 파일 생성
+  - api key, endPoint 생성
+
+4. androidManifest.xml 에 퍼미션 등록해야 하는데 이미 있음
+  - <uses-permission android:name="android.permission.INTERNET" />
+  - <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+* 여기서 gradle sync 해서 문제 없는지 확인.
+
+5. AppActivity 에 초기화 코드
+  - 샘플코드 hello appboy 참고
+
+6. registerActivityLifecycleCallbacks 하려면 min sdk version 이 16 이어야 함.
+  - registerActivityLifecycleCallbacks 을 AppActivity 안에서 호출하려면
+    - getApplication().registerActivityLifecycleCallbacks 으로 해야 함.
+
+7. 실행 후 session 이 증가되었는지 확인하자.
+    -  AppboyConfig appboyConfig = new AppboyConfig.Builder() 에서 api 키 확인한후 다시 하자.
+
+8. 세션 및 유저 증가 확인 ( dash board 에서)
+
+
+< push notification >
+1. gradle 세팅하고
+
+2. 토큰 등록
+  - appboy.xml  추가
+    - <bool translatable="false" name="com_appboy_firebase_cloud_messaging_registration_enabled">true</bool>
+    - <string translatable="false" name="com_appboy_firebase_cloud_messaging_sender_id">your_fcm_sender_id_here</string>
+
+3. 초기화 시 appboyConfig 속성 값 수정
+      - .setIsFirebaseCloudMessagingRegistrationEnabled(true)
+      .setFirebaseCloudMessagingSenderIdKey("YOUR FIREBASE SENDER ID HERE")
+
+4. 브레이즈 파이어베이스 메시지 서브스 등
+  - 안드로이드 매니패스트에 쓴다고 등록
+    - <service android:name="com.appboy.AppboyFirebaseMessagingService">
+        <intent-filter>
+          <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+      </service>
+
+
+
+curl -X POST -H "Content-Type: application/json" -d "{\"api_key\":\"f076c81e-30ba-494a-b3ac-b42c9d580eca\",\"external_user_ids\":[\"aos_3000\", \"aos_3001\"],\"messages\":{\"android_push\":{\"title\":\"Test push title\",\"alert\":\"Test push\",\"extra\":{\"YOUR_KEY1\":\"YOUR_VALUE1\"}}}}" https://rest.iad-03.braze.com/messages/send
+
+
+< 재업 >
+안드로이드는 FCM 사용하기 때문에 fcm 연동이 필요하다.
+
+1. 모듈 build.gradle 에 firebase 관련 dependency 추가.
+  implementation "com.google.firebase:firebase-core:${FIREBASE_CORE_VERSION}"
+  implementation "com.google.firebase:firebase-messaging:${FIREBASE_PUSH_MESSAGING_VERSION}"
+
+2. 토큰 등록
+  - 브레이즈 푸시는 fcm 토큰이 등록되기 전엔 작동하지 않는다.
+  2.1. 자동 등록
+    - appboy.xml 에 fcm send id 추가.
+    - send id 통해 런타임에 코드로 추가도 가능.
+  2.2. 수동 등록
+    - application onCreate 에서 세팅하기를 추천. 메인쓰레드에서..
+    - 예제 코드 참고
+
+3. firebase 대시보드에서 serverkey senderid 를 braze 대시보드에 세팅
+
+4. 푸시 영수증과 인텐트 오픈 핸들링 하기 위해 서비스 제공하는데 이 서비스 등록
+  - appboyFirebaseMessagingServiece 를 androidManifest.xml 에 등록
+  - 이미 푸시 관련 서비스가 등록되어 있으면 braze 에 remote message 넘겨줌.
+
+5. 8.0 이상부터 푸시채널 지원하는데, 이거 디파인 해줌.
+    - 알림채널 만드는 거 확인
+    - 디폴트 노티피케이션 세팅해주는 인터페이스 있음.
+      AppboyConfig.setDefaultNotificationChannelName()
+      AppboyConfig.setDefaultNotificationChannelDescription() .
+
+6. 대시보드 이용해 푸시 테스트 가능, curl 로도 해보자
+
+7. 번거롭거나 서버측에서 사용할 수 없는 방식으로 푸시 알림 사용자 정의 가능.
+  - IAppboyNotificationFactory
+  // factory method implemented in your custom IAppboyNotificationFactory
+  Notification createNotification(AppboyConfigurationProvider appConfigurationProvider, Context context, Bundle notificationExtras, Bundle appboyExtras) {
+    // example of getting notification title
+    String title = notificationExtras.getString(Constants.APPBOY_PUSH_TITLE_KEY);
+  }
+
+8. 푸시 커스텀 핸들링 ( 푸시, 오픈, 끄기, 키 값 쌍)
+  8.1. 브로드캐스트 리시버 등록. androidManifest.xml
+  8.2. 브로드캐스트 생성. 예제파일 참고.
+
+< Analysis >
+1. 세션 트래킹
+2. 유저 아이디 세팅 / alias 세팅
+3. 커스텀 이벤트
+  AppboyProperties eventProperties = new AppboyProperties();
+  eventProperties.addProperty("key", "value");
+  Appboy.getInstance(YOUR_ACTIVITY.this).logCustomEvent(YOUR_EVENT_NAME, eventProperties);
+
+4. 커스텀 어트리뷰트 세팅
+  - 기본 유저 어트리뷰터 세팅
+  - 커스텀 유저 어트리뷰트 세 ( 데이터 타입 별로 세팅 )
+  - SETTING PUSH NOTIFICATION SUBSCRIPTION 세팅

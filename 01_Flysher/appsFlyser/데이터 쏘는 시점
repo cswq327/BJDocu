@@ -1,0 +1,51 @@
+LAUNCH
+  appDelegate::applicationDidFinishLaunching
+  main.js :: startGame
+
+BEFORE_LOGIN
+  onEnter
+    checkAndStartLogin
+      - _initLoginUI ( 페이스북 로그아웃 상태일 때 )
+      - _checkLogin ( RockN.FacebookLogout 이 false )
+        - 페이스북 로그인 되어있으면 페이스북 로직
+        - 아니라면 게스트 로그인 로직
+
+LOGIN_AS_GUEST
+  reqCreateGuestAccount
+   - gate.gateHandler.createGuestAccount 응답에 getStorageItem( STORAGE_KEY.LOGIN_GUEST ) 이 없을 경우 한번 쏜다.
+
+LOGIN_AS_NEW
+LOGIN_AS_EXISTING
+  - 로그인 시퀀스 끝나고 로비 입장 요청할 때 경우에 따라.
+
+- player 데이터 업데이트 후 setBinaryStatus 에 따라
+  WELCOME_RNC
+  FIRST_SPIN
+
+BEFORE_ENTRY_LOADING
+BEFORE_LOADING
+AFTER_LOADING
+CONVERSION_NEW
+CONVERSION_OLD
+
+HIGH_ROLLER
+ATTENDANCE_DEAL
+HEAVY_PURCHASE
+PURCHASE
+LEVEL_UP
+OPEN_STORE
+GET_EXP
+FIRST_SPIN
+
+
+클레임
+
+// if(true === Boolean( cc.game.config[ cc.game.CONFIG_KEY.debugMode ])){
+		// 	return;
+        // }
+
+테섭 / 본섭
+var url = 'https://aflog.rockncash.com/appsflyerLog';
+       if( true === Boolean( cc.game.config[ cc.game.CONFIG_KEY.debugMode ]) ){
+           url = 'https://development.rockncash.com:8001/appsflyerLog';
+       }

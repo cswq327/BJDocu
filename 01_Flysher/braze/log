@@ -1,0 +1,37 @@
+08-17 00:33:24.478 9825-25711/net.flysher.rockncash D/WebSocket.cpp: Receiving data:index:263, len=4
+08-17 00:33:24.479 9825-9864/net.flysher.rockncash D/WebSocket.cpp: Notify data len 4 to Cocos thread.
+08-17 00:33:32.248 9825-9825/net.flysher.rockncash D/[OneSignal]: NotificationReceivedHandler : {"isAppInFocus":true,"shown":true,"androidNotificationId":-1615063701,"displayType":0,"payload":{"notificationID":"79318d3e-f692-4669-98fd-4651ca8cd4b6","title":"2","body":"2","lockScreenVisibility":1,"groupMessage":"","fromProjectNumber":"485485803377","priority":5,"rawPayload":"{\"google.delivered_priority\":\"normal\",\"google.sent_time\":1565969612680,\"google.ttl\":259200,\"google.original_priority\":\"normal\",\"custom\":\"{\\\"i\\\":\\\"79318d3e-f692-4669-98fd-4651ca8cd4b6\\\"}\",\"oth_chnl\":\"\",\"pri\":\"5\",\"vis\":\"1\",\"from\":\"485485803377\",\"alert\":\"2\",\"title\":\"2\",\"grp_msg\":\"\",\"google.message_id\":\"0:1565969612687898%f0df9452f9fd7ecd\",\"notificationId\":-1615063701}"}}
+08-17 00:33:32.256 9825-9864/net.flysher.rockncash D/[bin]: OneSignal_onNotificationReceived
+08-17 00:33:32.260 9825-9864/net.flysher.rockncash D/mobileLobby: [OneSignal]onNotificationReceived
+08-17 00:33:32.261 9825-9864/net.flysher.rockncash D/cocos2d-x debug info: #################### JS LOG #################### [OneSignal] onNotificationReceived  {"isAppInFocus":true,"shown":true,"androidNotificationId":-1615063701,"displayType":0,"payload":{"notificationID":"79318d3e-f692-4669-98fd-4651ca8cd4b6","title":"2","body":"2","lockScreenVisibility":1,"groupMessage":"","fromProjectNumber":"485485803377","priority":5,"rawPayload":"{\"google.delivered_priority\":\"normal\",\"google.sent_time\":1565969612680,\"google.ttl\":259200,\"google.original_priority\":\"normal\",\"custom\":\"{\\\"i\\\":\\\"79318d3e-f692-4669-98fd-4651ca8cd4b6\\\"}\",\"oth_chnl\":\"\",\"pri\":\"5\",\"vis\":\"1\",\"from\":\"485485803377\",\"alert\":\"2\",\"title\":\"2\",\"grp_msg\":\"\",\"google.message_id\":\"0:1565969612687898%f0df9452f9fd7ecd\",\"notificationId\":-1615063701}"}}
+
+
+// 누른 후
+08-17 00:34:00.338 9825-9825/net.flysher.rockncash D/[OneSignal]: NotificationOpenedHandler : {"action":{"type":0},"notification":{"isAppInFocus":true,"shown":true,"androidNotificationId":-1615063701,"displayType":0,"payload":{"notificationID":"79318d3e-f692-4669-98fd-4651ca8cd4b6","title":"2","body":"2","lockScreenVisibility":1,"groupMessage":"","fromProjectNumber":"485485803377","priority":5,"rawPayload":"{\"google.delivered_priority\":\"normal\",\"google.sent_time\":1565969612680,\"google.ttl\":259200,\"google.original_priority\":\"normal\",\"custom\":\"{\\\"i\\\":\\\"79318d3e-f692-4669-98fd-4651ca8cd4b6\\\"}\",\"oth_chnl\":\"\",\"pri\":\"5\",\"vis\":\"1\",\"from\":\"485485803377\",\"alert\":\"2\",\"title\":\"2\",\"grp_msg\":\"\",\"google.message_id\":\"0:1565969612687898%f0df9452f9fd7ecd\",\"notificationId\":-1615063701}"}}}
+
+
+
+08-17 00:34:00.351 9825-9864/net.flysher.rockncash D/[bin]: OneSignal_onNotificationOpened
+08-17 00:34:00.355 9825-9864/net.flysher.rockncash D/mobileLobby: [OneSignal]onNotificationOpened
+08-17 00:34:00.375 9825-9825/net.flysher.rockncash D/ViewRootImpl@54ca0a3[AppActivity]: MSG_WINDOW_FOCUS_CHANGED 1
+
+ab =
+{
+  att = {
+          aof = 0;
+          type = jpg;
+          url = "https://appboy-images.com/appboy/communication/assets/image_assets/images/5d4cdf4903bd8731ca022ef6/original.jpeg?1565318985";
+          };
+  c = "<null>";
+};
+
+aps = {
+      alert = {
+          body = 1;
+          title = 1;
+      };
+      "mutable-content" = 1;
+  };
+
+launchURL = "dlrockncash://deeplinking?eventid=1000006&eventtype=0";
+}

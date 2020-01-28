@@ -1,0 +1,25 @@
+1. userID 가 external id 가 맞는가.
+  - 이건 우리가 직접 external id 를 해줘야 함. 엄밀히 다른 의미고
+  - change user 를 통해 external id 를 세팅해줘야 함.
+2. curl 호출 시 invalid api key
+  - 하.. 시발 endpoint 를 안알려줌. iad-03 으로 해야 한다.
+3. test app group 새로 만드려고 하는데 전혀 다른 app 에 세팅해놔도 되는지.
+  - 됨.
+
+
+4. appboy_ios_sdk 버전 9.0 이상을 대상으로 하는데 이전 버전 지원은 어떻게??
+  - xcode에서 deployment target 을 9.0 이상으로 해야 할 것 같음.
+  - iphone4,ipad1 은 지원 안함.
+  - week linking 이란걸 찾아봐야 함. 하위호환 테스트 필요
+
+5. ios payload dictionary to json ??
+
+6. 게임중에 특정 이벤트가 발생할 경우 푸시노티피케이션을 요청하고 싶습니다.
+어떤 방식으로 하는게 좋을 지 혹시 가이드가 있을까요?
+
+
+curl -X POST -H "Content-Type: application/json" -d "{\"api_key\":\"f076c81e-30ba-494a-b3ac-b42c9d580eca\",\"external_user_ids\":[\"aos_3000\", \"aos_3001\"],\"messages\":{\"android_push\":{\"title\":\"Test push title\",\"alert\":\"Test push\",\"extra\":{\"YOUR_KEY1\":\"YOUR_VALUE1\"}}}}" https://rest.iad-03.braze.com/messages/send
+curl -X POST -H "Content-Type: application/json" -d "{\"api_key\":\"f076c81e-30ba-494a-b3ac-b42c9d580eca\",\"external_user_ids\":[\"2283\", \"2042\"],\"messages\":{\"apple_push\":{\"alert\":\"Test push\",\"extra\":{\"YOUR_KEY1\":\"YOUR_VALUE1\"}}}}" https://rest.iad-03.braze.com/messages/send
+
+
+{a=aos test push, p=0, t=RocknCash AOS Test, _ab=true, ab_nc=channel_id_max}

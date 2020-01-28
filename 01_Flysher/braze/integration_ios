@@ -1,0 +1,252 @@
+< 기본 연동 >
+1. sdk 연동해야 함
+- cocoapod 을 이용하는게 추천되고 있지만 연동이 잘 안되고 xcproject 라는 다른 파일로 xcode를 열어야 하며
+ pod전용 폴더 생성되는 게 꺼림직해서 carthage 를 이용해 연동함.
+
+ 2. carthage 를 이용한 연동
+   - https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos 에 사용법에 따라 추가
+   - Carthage 파일에 github "OneSignal/OneSignal-iOS-SDK" 삭제
+   - github "Appboy/Appboy-iOS-SDK" "3.15.0" 추가
+
+ 3. 코드에서 braze 초기화
+    - api key 는 braze dash board 에서 가져온다.
+
+ 4. 초기화 해서 실행하면 dashboard 에 유저가 떠야 하는데 안뜬다.
+    - !!!!! endpoint 세팅을 해줘야 함...
+    - info.plist 에 Appboy( dictionary ) - EndPoint( sdk.iad-03.braze.com ) 으로 해줘야 함.
+
+ 5. 초기화 끝. dashboard 에서 세션이 증가했는지 확인
+
+
+< push 연동 >
+
+- apn 등록
+[[UIApplication sharedApplication] registerForRemoteNotifications];
+
+- push token
+
+registerForRemoteNotifications 함수가 콜되면 허용할거냐는 팝업이 뜨고 유저가 허용하면
+application:didRegisterForRemoteNotificationsWithDeviceToken 이 호출됨.
+이때만 push token 을 받아올 수 있음.
+
+braze 에서 하는 얘기가 뭔지 확실히 알 필요가 있음.
+    The application:didRegisterForRemoteNotificationsWithDeviceToken:
+    delegate method is called every time after [[UIApplication sharedApplication] registerForRemoteNotifications] is called.
+    If you are migrating to Braze from another push service and your user’s device has already registered with APNs,
+    this method will collect tokens from existing registrations the next time the method is called, and users will not have to re-opt-in to push.
+
+- 푸시 핸들링 해야 하는데 푸시 관련 델리게이트 함수들을 이미 제공되니 적절하게 braze 적용..
+- 
+
+
+
+1. ios 10 이상부터 이미지를 이용한 푸쉬가 필요한데 그러려면 UNUserNotification 를 사용해야 한다.
+  - https://tez.kr/158 참고
+
+ [ AppController.h ]
+      #import <UserNotifications/UserNotifications.h> // 추가 ( >= iOS10)
+
+      @class RootViewController;
+
+      @interface AppController : NSObject <UIApplicationDelegate, AppsFlyerTrackerDelegate, UNUserNotificationCenterDelegate >
+      {
+          UIWindow *window;
+          Reachability *internetReach;
+          BOOL isDeepLink;
+      }
+
+  [ AppController.mm ]
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+          ...
+          if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_9_x_Max) {
+              UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+              center.delegate = self;
+              UNAuthorizationOptions options = UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge;
+              if (@available(iOS 12.0, *)) {
+                  options = options | UNAuthorizationOptionProvisional;
+              }
+              [center requestAuthorizationWithOptions:options
+                                    completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                                        [[Appboy sharedInstance] pushAuthorizationFromUserNotificationCenter:granted];
+                                    }];
+              [[UIApplication sharedApplication] registerForRemoteNotifications];
+          } else {
+              UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
+              [[UIApplication sharedApplication] registerForRemoteNotifications];
+              [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+          }
+          ...
+
+    이렇게 하고 빌드하면 에러가 뜨는데 UNUserNotification framework 를 Build Phase 의 Link Binary With Libraries 에 추가한다.
+
+  2. 토큰 받는 델리케이트 처리
+
+  3. 버전에 따른 푸쉬 델리게이트들 세팅
+
+  4. Rich Notification 세팅
+      - 이미 one siginal 할 때 만들어줬으므로 하지 않는다.
+
+  5. 여기까지 하고 curl 명령을 통해 푸시가 오는지 테스트
+    - curl 을 보내려면 external_user_ids 가 필요한데, 코드를 통해 등록해야 함.
+    - https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/push_notifications/testing/
+    - !!! 여기서도 iad-03 으로 EndPoint 를 바꿔야 함.
+    - api 호출을 위한 key 를 따로 만들어야 함. dashboard -> delveoper console 에서..
+    - curl -X POST -H "Content-Type: application/json" -d "{\"api_key\":\"f076c81e-30ba-494a-b3ac-b42c9d580eca\",\"external_user_ids\":[\"2000\"],\"messages\":{\"apple_push\":{\"alert\":\"Test push\",\"extra\":{\"YOUR_KEY1\":\"YOUR_VALUE1\"}}}}" https://rest.iad-03.braze.com/messages/send
+    - 테스트 확인
+    - 이미지 push 테스트 확인 은 dashboard 에 확인
+    - 푸쉬는 잘 오지만 이미지 안옴
+
+  6. push notification serveice extension 에서 payload 세팅해줘야 함.
+    - 샘플 그대로 복사함.. ㅠㅠ
+    - 잘 되는 지 확인!
+    - 잘 되지만 노티의 액션 버튼 이 안됌...
+
+  7. 푸시 등록할 때 category 세팅 해야 함.
+    - 이미지와 함께 액션 버튼 포함된 푸쉬가 되는지 잘 확인한다.
+
+  8. 커스터마이징 세팅
+    - 앱이 활성화 되어있는 경우 알림이 수신되면 배지 수를 지우자
+      - applicationDidBecomeActive
+        - [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    - ... TODO  ( https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/in-app_messaging/customization/ )
+
+< in app messages 연동 >
+  1. push 연동했으면 이것도 되는지 보자.
+    - 안됨..
+  2. in app message 핸들할 수 있는 델리게이트 추가 해줘야 함.
+      #pragma mark - ABKInAppMessageControllerDelegate
+
+      - (ABKInAppMessageDisplayChoice)beforeInAppMessageDisplayed:(ABKInAppMessage *)inAppMessage {
+        NSLog(@"beforeInAppMessageDisplayed: delegate called in Stopwatch. Returning ABKDisplayInAppMessageNow.");
+        return ABKDisplayInAppMessageNow;
+      }
+
+
+< ios deep linking >
+1. scheme 등록 ( (ex) dlrockncash:://  ) : info.plist 에서
+  - URL types 키 추가 . xcode 에서 자동으로 array 만들어주는데 item 0
+  - item 0 에서 URL identifier 키 추가하고 앱 아이디 넣어주고
+  - item 0 에서 URL Schemes 추가해주면 자동으로 또 배열 만들어줌
+  - as code 로 열어보면 대충
+
+      <key>CFBundleURLTypes</key>
+      <array>
+        <dict>
+            <key>CFBundleURLName</key>
+            <string>YOUR.SCHEME</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>YOUR.SCHEME</string>
+            </array>
+        </dict>
+      </array>
+
+  - 우리 프로젝트에서는 이렇게 되어있다.
+    <key>CFBundleURLTypes</key>
+  	<array>
+  		<dict>
+  			<key>CFBundleURLName</key>
+  			<string>net.flysher.rockncash</string>
+  			<key>CFBundleURLSchemes</key>
+  			<array>
+  				<string>dlrockncash</string>
+  			</array>
+  		</dict>
+  		<dict>
+  			<key>CFBundleURLSchemes</key>
+  			<array>
+  				<string>fb846417545420735</string>
+  				<string>dlAppRockNCash</string>
+  			</array>
+  		</dict>
+  	</array>
+
+2. scheme whitelist 추가.
+      - iOS9 부터, 앱이 커스텀 스킴의 화이트 리스트를 요구함.
+      - 밖에서 이 리스트 밖에서 스킴을 호출하면 시스템 에러 나옴. 딥 링크 안된다.
+      - <Warning>: -canOpenURL: failed for URL: “yourapp://deeplink” – error: “This app is not allowed to query for scheme yourapp”
+      - 예를 들어 푸시나 인앱 메시지에서 눌렀을 경우 페이스북 앱을 열어야 하는 경우 fb의 화이트 리스트에 등록 되어있지 않다면 딥 링크 거부.
+
+      - info.plist 에서 앱의 화이트 리스트에 딥 링크해야 하는 것들 추가 한다.
+      - LSApplicationQueriesSchemes 키에 추가 해야 함.
+      ex)
+      <key>LSApplicationQueriesSchemes</key>
+      <array>
+        <string>stopwatch</string>
+        <string>facebook</string>
+        <string>twitter</string>
+      </array>
+
+      ex) 우리 게임
+      <key>LSApplicationQueriesSchemes</key>
+    	<array>
+    		<string>fbapi</string>
+    		<string>fb-messenger-api</string>
+    		<string>fbauth2</string>
+    		<string>fbshareextension</string>
+    		<string>fb-messenger-share-api</string>
+    	</array>
+
+      참고
+      https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html#//apple_ref/doc/uid/TP40009250-SW14
+
+3. 이제 핸들러 구현
+   - 앱이 활성화 되면 application:handleOpenURL ( iOS 9.0 까지 )호출 됨. iOS 9.0 이상부터는 openURL:options: 이 호출 됨.
+   - 중요한건 NSURL 인데..
+   - 이를 받아 url 과 쿼리를 구분할 수 있고 이에 따라 처리가 가능하다.
+   - 우리 게임에서는 로컬 스토리지에 DEEP_LINK 라는 키에 url 저장한다.
+   - RockN.DeepLink.checkReferrer 에서 저장된 url 을 가지고 와서 처리해줌
+
+4. Universal Link
+  - apple-app-site-association 파일을 업로드 해야 한다.
+  - rnc > Capabilities 에 Associated Domains 에  domain 등록해야 하는데...
+  - 좀더 살펴보자.
+  - https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html
+
+5. ATS ( 앱 전송 보안 )
+ - 앱과 웹 서비스간 연결 보안 기능
+ - ios 9.0 이상부터 기본적으로 적용.
+ - 이런 에러가 나오면 이걸 의심
+  CFNetwork SSLHandshake failed (-9801)
+  Error Domain=NSURLErrorDomain Code=-1200 "An SSL error has occurred and a secure connection to the server cannot be made."
+  NSURLSession/NSURLConnection HTTP load failed (kCFStreamErrorDomainSSL, -9802)
+
+  - SSL 도구를 사용하면 웹 서버 보안 문제를 정확하게 파악할 수 있습니다
+  - https://www.ssllabs.com/ssltest/index.html 에서 ssl 테스트 해보자
+  - ATS를 부분적으로 비활성화 할 수 있다.
+  key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+      <key>NSExceptionDomains</key>
+        <dict>
+          <key>example.com</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <false/>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+      </dict>
+    </dict>
+  </dict>
+
+6. ABKURLDelegate 로 uri 처리를 커스텀하게 처리 가능한데.. 초기화할 때 옵션으로 지정
+
+
+
+< Rich Notification >
+참고 : https://github.com/Appboy/appboy-ios-sdk/blob/master/Example/Stopwatch/AppDelegate.m#L245-L249
+
+ 1. 푸시 카테고리 추가. 브레이즈 디폴트 푸시 카테고리로 추가했음.
+    - 백그라운드일때 액션 클릭하면 앱이 안열리고 그냥 닫힘.
+    - 커스터마이징 가능함 액션 버튼 커스터마이징이...
+ 2. 푸시 핸들링 상호작용 가능하게 하자.
+  - 왜 안들어올까...
+
+< key-value pair 를 핸들링 할 수 있다. >
+- 좀 더 확인해봐야 함.
+
+
+< 인앱 메시지 >
+1. 커스터마이징
+  - 델리게이트 세팅

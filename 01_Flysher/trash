@@ -1,0 +1,202 @@
+Weekly Challenge에서 Draw를 누르면 오류메시지가 나옵니다
+
+
+#pragma mark - Local Notification
+- (void)fireLocalNotification {
+    UILocalNotification *noti = [[UILocalNotification alloc] init ];
+
+    noti.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+    noti.timeZone = [NSTimeZone systemTimeZone];
+    noti.alertTitle = @"this is Title";
+    noti.alertBody  = @"this is body";
+    noti.applicationIconBadgeNumber  = 1;
+    noti.soundName = UILocalNotificationDefaultSoundName;
+
+    [[UIApplication sharedApplication] scheduleLocalNotification:noti];
+}
+
+
+cocos2d: SpriteFrameCache: Frame 'PU_genieMission_QuestLevel04.png' isn't found
+Can't find CCSpriteFrame with PU_genieMission_QuestLevel04.png. Please check your .plist file
+
+DYCHECK init questHandler   null null
+
+
+LabelTextFormatter error:can't find letter definition in font file for letter:
+
+PU_newArrivecashAR_mb
+
+goldSpinVip RNCScene [onEnter Call Super]
+
+mainHUD >> onLoungeClick ( 슬롯에서.. )
+newLobby >> onLoungeClick >> newLobby( startEnterVIP ) ( 로비에서.. )
+
+
+vip 슬롯 개수 89 개
+필터 거치면 69 개
+
+휠오브잭팟
+루나포춘
+포춘다이아
+골드문
+베가스 다이아
+
+1014 1085, 1035 1087 1083
+
+휠오브잭팟 1014
+골든 이글 1031
+휠오브잭팟 1014
+루나포춘  1085
+포춘다이아 1035
+
+제우스
+알오하
+플레이밍
+퀸오브리치
+
+
+
+병주 endholder eftEdge.pop :   1025 zeusThunderVip
+vipLounge.js:1301  병주 endholder eftEdge.pop :   1004 halloweenVip
+vipLounge.js:1399  병주 ------  runSlotMoveAction
+vipLounge.js:1400  병주 slotHolder :   5
+vipLounge.js:1402  병주  0 1004 halloweenVip
+vipLounge.js:1402  병주  1 1025 zeusThunderVip
+vipLounge.js:1402  병주  2 1039 alohaWheelVIP
+vipLounge.js:1402  병주  3 1020 flamingStarVip
+vipLounge.js:1402  병주  4 1036 queenOfRichesVIP
+vipLounge.js:1405  병주 leftEdge :   34
+vipLounge.js:1407  병주  0 1017 easterJackpotVip
+vipLounge.js:1407  병주  1 1061 mrBillionaireVip
+vipLounge.js:1407  병주  2 1056 GreatEmpireVIP
+vipLounge.js:1407  병주  3 1064 vampiresRosesVIP
+vipLounge.js:1407  병주  4 1077 indianaCoinsVip
+vipLounge.js:1407  병주  5 1072 pharaohWildsVip
+vipLounge.js:1407  병주  6 1052 vegasQueensVIP
+vipLounge.js:1407  병주  7 1044 wildWildBuffaloVip
+vipLounge.js:1407  병주  8 1047 goldenCloversVip
+vipLounge.js:1407  병주  9 1062 TripleWolfVip
+vipLounge.js:1407  병주  10 1058 fortuneTreeVip
+vipLounge.js:1407  병주  11 1026 billionairePiggyVip
+vipLounge.js:1407  병주  12 1059 JackpotRushVip
+vipLounge.js:1407  병주  13 1024 hotCashVip
+vipLounge.js:1407  병주  14 1055 LuckyLampVip
+vipLounge.js:1407  병주  15 1046 shiningLinkVip
+vipLounge.js:1407  병주  16 1067 santasGiftsVip
+vipLounge.js:1407  병주  17 1023 jackpotXmasVip
+vipLounge.js:1407  병주  18 1050 GoldSpinVIP
+vipLounge.js:1407  병주  19 1045 FuwaFubao
+vipLounge.js:1407  병주  20 1028 vegasLinkVip
+vipLounge.js:1407  병주  21 1066 Treasure Islnad Vip
+vipLounge.js:1407  병주  22 1043 oceanLinkVip
+vipLounge.js:1407  병주  23 1009 queensAgeVip
+vipLounge.js:1407  병주  24 1008 jackpotCityVip
+vipLounge.js:1407  병주  25 1054 fishingMaster2Vip
+vipLounge.js:1407  병주  26 1042 bigMoneyVip
+vipLounge.js:1407  병주  27 1041 goldBarVIP
+vipLounge.js:1407  병주  28 1029 dragonRisingVip
+vipLounge.js:1407  병주  29 1013 westernWildVip
+vipLounge.js:1407  병주  30 1030 kingOfSavannaVip
+vipLounge.js:1407  병주  31 1022 cabaretFeverVip
+vipLounge.js:1407  병주  32 1010 eldoradoVip
+vipLounge.js:1407  병주  33 1006 back70sVip
+vipLounge.js:1410  병주 rigthEdge :   30
+vipLounge.js:1412  병주  0 1019 fiery7Vip
+vipLounge.js:1412  병주  1 1021 goldMineVip
+vipLounge.js:1412  병주  2 1005 shopaholicVip
+vipLounge.js:1412  병주  3 1002 cleopatraVip
+vipLounge.js:1412  병주  4 1007 hanselVip
+vipLounge.js:1412  병주  5 1048 fairyMischiefVip
+vipLounge.js:1412  병주  6 1003 madSpinVip
+vipLounge.js:1412  병주  7 1034 diamondWheelVip
+vipLounge.js:1412  병주  8 1031 goldenEagleVip
+vipLounge.js:1412  병주  9 1014 wheelOfJackpotVip
+vipLounge.js:1412  병주  10 1085 lunarFortuneVip
+vipLounge.js:1412  병주  11 1035 fortuneDiamondVip
+vipLounge.js:1412  병주  12 1087 goldMoonLinkVip
+vipLounge.js:1412  병주  13 1083 vegasDiamondVip
+vipLounge.js:1412  병주  14 1079 TreasureOfOz
+vipLounge.js:1412  병주  15 1086 burningSunVip
+vipLounge.js:1412  병주  16 1082 diamondCats
+vipLounge.js:1412  병주  17 1070 fortunePandaVip
+vipLounge.js:1412  병주  18 1073 sharkParadeVip
+vipLounge.js:1412  병주  19 1040 pumpkinPotVip
+vipLounge.js:1412  병주  20 1057 captainSharkVip
+vipLounge.js:1412  병주  21 1012 fortuneVip
+vipLounge.js:1412  병주  22 1075 BisonGoldVip
+vipLounge.js:1412  병주  23 1084 wildWildZeusVip
+vipLounge.js:1412  병주  24 1015 wjDoubleSevenVip
+vipLounge.js:1412  병주  25 1011 shiningVip
+vipLounge.js:1412  병주  26 1018 fishingMasterVip
+vipLounge.js:1412  병주  27 1068 AllStar Vip
+vipLounge.js:1412  병주  28 1016 goldenSheepVip
+vipLounge.js:1412  병주  29 1069 fortuneDiamondJackpotReelVip
+
+batchSlotMachines: function() {
+        cc.log(" 병주  RockN.Player.lastEnterSlot >> ", RockN.Player.lastEnterSlot );
+
+        var machinePos = 0;
+        if (RockN.Player.lastEnterSlot !== -1) {
+            for (i = 0; i < this.slotGame.length; i++) {
+                if (this.slotGame[i].id === RockN.Player.lastEnterSlot) {
+                    machinePos = i - 2;
+                    cc.log(" 병주 라스트 슬롯 :  ", machinePos, this.slotGame[i].id , this.slotGame[i].gameName );
+
+                    var frontArr = this.slotGame.splice( 0, machinePos );
+                    this.slotGame = this.slotGame.concat( frontArr );
+
+                    break;
+                }
+            }
+        }
+
+        RockN.Player.lastEnterSlot = -1;
+        // var startIndex = 0 - machinePos;
+        var startIndex = 0;
+        for (var i = 0; i < this.slotGame.length; i++, startIndex++) {
+            var attr;
+            if (startIndex >= this.slotGame.length) {
+                startIndex -= this.slotGame.length;
+            } else if (startIndex < 0) {
+                startIndex += this.slotGame.length;
+            }
+            if (startIndex > this.slotGame.length / 2) {
+                this.slotGame[i].setVisible(false);
+                this.leftEdge.push(this.slotGame[i]);
+            } else if (startIndex >= this.slotHolders.length) {
+                this.slotGame[i].setVisible(false);
+                this.rightEdge.push(this.slotGame[i]);
+            } else {
+                attr = this.slotHolders[startIndex];
+                this.slotHolders[startIndex].slotMachine = this.slotGame[i];
+                this.slotGame[i].init();
+
+                this.slotGame[i].attr({
+                    x: attr.x,
+                    y: attr.y,
+                    anchorX: 0.5,
+                    anchorY: 0.5,
+                    scale: attr.scale
+
+                });
+            }
+        }
+
+
+
+        cc.log(" 병주 ------  batchSlotMachines");
+        cc.log(" 병주 slotHolder :  ", this.slotHolders.length, this.slotHolders );
+        for( var k = 0 ; k < this.slotHolders.length; ++k ) {
+            cc.log(" 병주 ", k , this.slotHolders[k].slotMachine.id, this.slotHolders[k].slotMachine.gameName );
+        }
+
+        cc.log(" 병주 leftEdge :  ", this.leftEdge.length );
+        for( k = 0 ; k < this.leftEdge.length; ++k ) {
+            cc.log(" 병주 ", k , this.leftEdge[k].id, this.leftEdge[k].gameName );
+        }
+
+        cc.log(" 병주 rigthEdge :  ", this.rightEdge.length );
+        for( k = 0 ; k < this.rightEdge.length; ++k ) {
+            cc.log(" 병주 ", k , this.rightEdge[k].id, this.rightEdge[k].gameName );
+        }
+    },
